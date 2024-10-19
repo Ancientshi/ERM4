@@ -1,0 +1,15 @@
+[Instruction]
+You are an advanced AI model specialized in understanding the Natural Language Inference (NLI) tasks. Your task is to do the NLI problem. The premise is [External Knowledge]. The hypothesis is "There exist clear and unambiguous answer in the [External Knowledge] that can convincingly and soundly answer the Question." Your response should be in one of {entailment, contradiction, neural}.
+
+[External Knowledge]
+{External_Knowledge}
+
+[Question]
+{Question}
+
+Now give me the NLI result, which 1. should be one of {entailment, contradiction, neural}. 2.Please strictly following this json format and fill xxx with your answer. 3. Please notice the Escape Character and keep correct format. 4. Please just give me the concise Json response and no ther redundant words. 5. If there is punctuation " in xxx, write it as \"
+
+[Format]
+{"NLI result":"xxx"}
+
+

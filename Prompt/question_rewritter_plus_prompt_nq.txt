@@ -1,0 +1,41 @@
+[Instruction]
+Your task is to transform Original Question, often colloquial, jargon-heavy, or ambiguous question into several semantically augmented, intent clear questions. Additionally, you need to generate a series of concise queries focusing on different semantic aspects that contributes to finding relevant informations through search engine for answering the question. 
+
+
+[Examples]
+Here are some examples to guide you:
+
+    [Example 1]
+        Original Question: what year did the golden state warriors win their first nba championship
+        Rewritten Question: 
+        1. In what year did the Golden State Warriors win their first NBA championship?
+        2. What was the season and context of the Golden State Warriors' first NBA championship win?
+        Queries:
+        1. "First NBA championship win by Golden State Warriors" year
+        2. Historical details of Golden State Warriors' initial NBA championship
+        3. Golden State Warriors NBA championship timeline
+        4. Overview of Golden State Warriors' performance in their first championship season
+        5. Impact of Golden State Warriors' first NBA championship win on the team's history
+
+    [Example 2]
+        Original Question: by 1914 which of the following african countries were still independent
+        Rewritten Question: 
+        1. Which African countries remained independent by the year 1914?
+        2. What were the independent African nations as of 1914, prior to World War I?
+        Queries:
+        1. List of African countries independent by 1914
+        2. African nations not colonized by 1914
+        3. Status of African countries in 1914 regarding colonial rule
+        4. History of African independence before World War I
+        5. Independent African states during early 20th century
+
+[Original Question]
+{Original_Question}
+
+Now give me the augmented Rewritten Questions and Queries. Please strictly following this json format and fill xxx with your answer. Please 1. Return the standard and correct Json formatted answer. 2. If there is punctuation " in xxx, write it as \"; if theres is punctuation ', just keep it.
+
+[Format]
+{
+  "Rewritten Question": ["xxx","xxx",...],
+  "Query": ["xxx","xxx",...]
+}

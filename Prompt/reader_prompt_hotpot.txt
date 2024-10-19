@@ -1,0 +1,26 @@
+[Instruction]
+Your task is to use the provided [External Knowledge] to answer the [Question]. To understand the Question and to ultilize the External Knowledge to generate a coherent and accurate response.
+
+[Question]
+{Question}
+
+[External Knowledge]
+{External_Knowledge}
+
+[Examples]
+    [Example 1]
+        Question: In what year was the university where Sergei Aleksandrovich Tokarev was a professor founded?
+        Answer: ["1755"]
+
+    [Example 2]
+        Question: Which state does the drug stores, of which the CEO is Warren Bryant, are located?
+        Answer: ["Hawaii"]
+
+    [Example 3]
+        Question: What video game published by Sierra Entertainment includes an antagonist figure who's mystery is the core of the series?
+        Answer: ["F.E.A.R."]
+
+Now you need to strictly following the given format to response by filling xxx with your answer. Remembering: 1. Return the standard and correct Json formatted answer. 2. Don't reply any irrelevant content. 3. answer should be concise. 4.If there is punctuation " in xxx, write it as \"
+
+[Format]
+["xxx"] 

@@ -1,0 +1,41 @@
+[Instruction]
+Your task is to transform Original Question, often colloquial, jargon-heavy, or ambiguous question into several semantically augmented, intent clear questions. Additionally, you need to generate a series of concise queries focusing on different semantic aspects that contributes to finding relevant informations through search engine for answering the question. 
+
+
+[Examples]
+Here are some examples to guide you:
+
+    [Example 1]
+        Original Question:  What is Dominick Bellizzi's occupation?
+        Rewritten Question: 
+        1. What is the current occupation of Dominick Bellizzi?
+        2. What professional roles has Dominick Bellizzi held?
+        Queries:
+        1. "Dominick Bellizzi" current job title and occupation
+        2. Career profile for Dominick Bellizzi
+        3. Resume or professional background of Dominick Bellizzi
+        4. Dominick Bellizzi employment history
+        5. Professional roles and industries associated with Dominick Bellizzi
+
+    [Example 2]
+        Original Question: In what country is Nakina railway station?
+        Rewritten Question: 
+        1. In which country is the Nakina railway station located?
+        2. What is the geographical location of Nakina railway station?
+        Queries:
+        1. "Nakina railway station" location country
+        2. Country of Nakina railway station
+        3. Geographic details of Nakina railway station
+        4. Location information for Nakina railway station
+        5. Nakina railway station situated in which country
+
+[Original Question]
+{Original_Question}
+
+Now give me the augmented Rewritten Questions and Queries. Please strictly following this json format and fill xxx with your answer. Please 1. Return the standard and correct Json formatted answer. 2. If there is punctuation " in xxx, write it as \"; if theres is punctuation ', just keep it.
+
+[Format]
+{
+  "Rewritten Question": ["xxx","xxx",...],
+  "Query": ["xxx","xxx",...]
+}

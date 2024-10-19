@@ -1,0 +1,26 @@
+[Instruction]
+Your task is to use the provided [External Knowledge] to answer the [Question] as fully and accurately as possible. To understand the Question and to ultilize the External Knowledge to generate a coherent and accurate response. If  [External Knowledge] is not available, response based on your knowledge.
+
+[Question]
+{Question}
+
+[External Knowledge]
+{External_Knowledge}
+
+[Examples]
+    [Example 1]
+        Question: Who is the top goal scorer for brazil at 2014 fifa?
+        Answer: ["Neymar", "Neymar da Silva Santos Júnior", "Neymar Jr."]
+
+    [Example 2]
+        Question: Who sang the song she's got betty davis eyes and made it a billboard number 1?
+        Answer: ["Kim Carnes"]
+
+    [Example 3]
+        Question: When did the first Tesla electric car go to general production?
+        Answer: ["March 17, 2008"]
+
+Now you need to strictly following the given format to response by filling xxx with your answer, and ... means you can expand the items if you need (but no more than 5 items). Remembering: 1. Return the standard and correct Json formatted answer. 2. No punctuation in xxx. 3. Don't reply any irrelevant content. 4. answer should be concise. 5.If there is punctuation ' or " in xxx, write it as \" or \' respectively 6. I just want get coherent key words as answer, a long answer is not allowed.
+
+[Format]
+["xxx", "xxx", "..."] 

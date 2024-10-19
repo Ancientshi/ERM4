@@ -1,0 +1,66 @@
+[Instruction]
+Your task is to transform Original Question, often colloquial, jargon-heavy, or ambiguous question into several semantically augmented, intent clear questions. Additionally, you need to generate a series of concise queries focusing on different semantic aspects that contributes to finding relevant informations through search engine for answering the question. 
+
+[Examples]
+Here are some examples to guide you:
+
+    [Example 1: Compositional type question]
+        Original Question:  What nationality is Mary Elizabeth Bliss's husband?
+        Rewritten Question: 
+        1. What is the nationality of Mary Elizabeth Bliss's husband?
+        2. Who is Mary Elizabeth Bliss married to, and what is his nationality?
+        Queries:
+        1. "Mary Elizabeth Bliss husband" nationality
+        2. Identity and background of Mary Elizabeth Bliss's spouse
+        3. Nationality and personal details of Mary Elizabeth Bliss's husband
+        4. Marriage details of Mary Elizabeth Bliss
+        5. Profile of Mary Elizabeth Bliss's husband including nationality and background
+
+    [Example 2: Bridge comparision type question]
+        Original Question: Which film has the director born later, Liz In September or Panama Flo?
+        Rewritten Question: 
+        1. Who is the director of "Liz in September" and when was he or she born?
+        2. Who is the director of "Panama Flo" and when was he or she born?
+        3. Which film directed by a younger director, "Liz in September" or "Panama Flo"?
+        Queries:
+        1. "Liz in September" director birthdate
+        2. "Panama Flo" director birthdate
+        3. Comparison of "Liz in September" and "Panama Flo" directors' ages
+        4. Release dates and directors' details for "Liz in September" and "Panama Flo"
+        5. Directors of "Liz in September" and "Panama Flo" with biographical information
+
+    [Example 3: Inference type question]
+        Original Question: Who is Lewis Of Luxembourg's paternal grandfather?
+        Rewritten Question: 
+        1. Who is the paternal grandfather of Lewis of Luxembourg?
+        2. What is the lineage of Lewis of Luxembourg, focusing on his paternal side?
+        Queries:
+        1. "Lewis of Luxembourg paternal grandfather" identity
+        2. Family tree of Lewis of Luxembourg focusing on paternal lineage
+        3. Historical background of Lewis of Luxembourg's paternal grandfather
+        4. Genealogy details for Lewis of Luxembourg's father's side of the family
+        5. Biographical information on Lewis of Luxembourg's paternal grandfather
+
+    [Example 4: Comparision type question]
+        Original Question:  Are Krasny Khutor and Grachi, Astrakhan Oblast located in the same country?
+        Rewritten Question: 
+        1. Are the locations Krasny Khutor and Grachi both situated in Astrakhan Oblast, Russia?
+        2. Is Astrakhan Oblast, the region containing Krasny Khutor and Grachi, part of Russia?
+        Queries:
+        1. Location details for Krasny Khutor and Grachi in Astrakhan Oblast
+        2. Confirm country for Astrakhan Oblast locations Krasny Khutor and Grachi
+        3. Map showing Krasny Khutor and Grachi in Astrakhan Oblast, Russia
+        4. Geographic relationship between Krasny Khutor and Grachi in Astrakhan Oblast
+        5. Administrative divisions of Astrakhan Oblast including Krasny Khutor and Grachi
+
+[Original Question]
+{Original_Question}
+
+Now give me the augmented Rewritten Questions and Queries. Please strictly following this json format and fill xxx with your answer. Please 1. Return the standard and correct Json formatted answer. 2. If there is punctuation " in xxx, write it as \"; if theres is punctuation ', just keep it.
+
+[Format]
+{
+  "Rewritten Question": ["xxx","xxx",...],
+  "Query": ["xxx","xxx",...]
+}
+
