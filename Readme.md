@@ -57,21 +57,22 @@ We provide demo dataset for Q&A, and Fine-Tuning Gemma-2B in Records.
    cd ERM4
    pip install -r requirements.txt
    ```
+3. Download Demo Datasets from https://drive.google.com/drive/folders/1UYkFJqfuNbJJZUad-psssL4uSn4ttuAY?usp=sharing, move under ERM4.
 
-3. Run the demo (knowledge retrieved from Bing search is pre-prepared for ease of use):
+4. Run the demo (knowledge retrieved from Bing search is pre-prepared for ease of use):
 
    ```bash
    cd shell
    bash ERM4.sh
    ```
 
-4. Fine-tune Gemma-2B
+5. Fine-tune Gemma-2B
    ```
    cd shell
    bash instruct_fine_tune_gemma.sh
    ```
 
-5. Deploy the trained GEMMA-2B service for Flask to support API calls
+6. Deploy the trained GEMMA-2B service for Flask to support API calls
    ```
    cd shell
    bash infer_gemma_rewriter.sh
