@@ -1,0 +1,14 @@
+datasets==3.0.1
+fire==0.7.0
+Flask==3.0.3
+numpy==2.1.2
+openai==1.52.0
+peft==0.13.2
+regex==2024.5.15
+Requests==2.32.3
+rouge==1.0.1
+safetensors==0.4.5
+scikit_learn==1.5.2
+torch==2.5.0
+tqdm==4.66.4
+transformers==4.45.2
