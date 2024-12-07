@@ -116,7 +116,17 @@ If you find our work useful and would like to reference it, please cite our pape
   url       = {https://ebooks.iospress.nl/doi/10.3233/FAIA240748}
 }
 ```
-
+```bibtext
+@misc{shi2024eragentenhancingretrievalaugmentedlanguage,
+      title={ERAGent: Enhancing Retrieval-Augmented Language Models with Improved Accuracy, Efficiency, and Personalization}, 
+      author={Yunxiao Shi and Xing Zi and Zijing Shi and Haimin Zhang and Qiang Wu and Min Xu},
+      year={2024},
+      eprint={2405.06683},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2405.06683}, 
+}
+```
 ## License
 
 This project is licensed under the by-nc-sa 4.0 License.
