@@ -1,0 +1,47 @@
+cff-version: 1.2.0
+message: "Please cite the ECAI 2024 paper in preferred-citation when using ERM4."
+type: software
+title: "ERM4: Enhancing Retrieval and Managing Retrieval"
+authors:
+  - family-names: Shi
+    given-names: Yunxiao
+repository-code: "https://github.com/Ancientshi/ERM4"
+url: "https://github.com/Ancientshi/ERM4"
+license: CC-BY-NC-SA-4.0
+keywords:
+  - retrieval-augmented generation
+  - open-domain question answering
+  - query rewriting
+  - knowledge filtering
+  - memory knowledge reservoir
+  - retrieval trigger
+preferred-citation:
+  type: conference-paper
+  title: "Enhancing Retrieval and Managing Retrieval: A Four-Module Synergy for Improved Quality and Efficiency in RAG Systems"
+  authors:
+    - family-names: Shi
+      given-names: Yunxiao
+    - family-names: Zi
+      given-names: Xing
+    - family-names: Shi
+      given-names: Zijing
+    - family-names: Zhang
+      given-names: Haimin
+    - family-names: Wu
+      given-names: Qiang
+    - family-names: Xu
+      given-names: Min
+  collection-title: "ECAI 2024"
+  collection-type: proceedings
+  publisher:
+    name: "IOS Press"
+  year: 2024
+  volume: 392
+  start: 2258
+  end: 2265
+  doi: "10.3233/FAIA240748"
+  url: "https://ebooks.iospress.nl/doi/10.3233/FAIA240748"
+  identifiers:
+    - type: url
+      value: "https://arxiv.org/abs/2407.10670"
+      description: "ERM4 preprint"

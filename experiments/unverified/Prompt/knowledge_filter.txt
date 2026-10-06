@@ -1,0 +1,7 @@
+Classify whether the knowledge contains a reliable answer or useful evidence for the question.
+[Question]
+{Question}
+[Knowledge]
+{External_Knowledge}
+Return only valid JSON: {"NLI result": "entailment"}.
+The allowed labels are entailment, contradiction, and neutral.

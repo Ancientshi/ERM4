@@ -1,0 +1,7 @@
+# Cached QA demo and optional offline smoke script; no model stack.
+# Version pins match the corresponding entries in the original requirements.txt.
+numpy==2.1.2
+regex==2024.5.15
+Requests==2.32.3
+rouge==1.0.1
+tqdm==4.66.4

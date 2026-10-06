@@ -1,0 +1,5 @@
+Clarify the original question and generate several concise search queries covering different relevant aspects.
+[Original Question]
+{Original_Question}
+Return only valid JSON in this format:
+{"Rewritten Question": ["clear question"], "Query": ["query one", "query two"]}

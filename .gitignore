@@ -1,0 +1,12 @@
+.env
+.env.*
+!.env.example
+.venv/
+__pycache__/
+*.py[cod]
+.DS_Store
+# Local datasets, generated results, checkpoints, and cached experiences.
+Records/
+ExperienceSave/
+model/
+outputs/

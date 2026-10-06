@@ -1,132 +1,50 @@
+# ERM4 — Enhancing Retrieval and Managing Retrieval
 
-# Enhancing Retrieval and Managing Retrieval: A Four-Module Synergy for Improved Quality and Efficiency in RAG Systems
+Code for **Enhancing Retrieval and Managing Retrieval: A Four-Module Synergy for Improved Quality and Efficiency in RAG Systems**, ECAI 2024, pp. 2258–2265.
 
-This repository contains the source code and implementation for the paper "Enhancing Retrieval and Managing Retrieval: A Four-Module Synergy for Improved Quality and Efficiency in RAG Systems." The project introduces a framework that optimizes retrieval processes in Retrieval-Augmented Generation systems, enhancing both the quality and efficiency of information retrieval for Open-Domain Question Answering tasks.
+Yunxiao Shi, Xing Zi, Zijing Shi, Haimin Zhang, Qiang Wu, Min Xu.
 
-## Overview
+[Paper / DOI](https://ebooks.iospress.nl/doi/10.3233/FAIA240748) · [arXiv:2407.10670](https://arxiv.org/abs/2407.10670) · [BibTeX](citations.bib) · [Citation metadata](CITATION.cff)
 
-Retrieval-Augmented Generation (RAG) systems combine large language models (LLMs) with external knowledge retrieval to improve the relevance and accuracy of responses. However, traditional RAG systems often face issues such as low retrieval quality, irrelevant knowledge, and redundant retrievals. Our approach introduces a four-module synergy to tackle these limitations:
+ERM4 studies retrieval-augmented generation (RAG) for open-domain question answering: clarified questions and multiple queries, NLI-based knowledge filtering, cached knowledge, and triggering external retrieval.
 
-1. **Query Rewriter+:** Generate more nuanced and multi-faceted queries, enhancing search coverage and clarifying intent.
-2. **Knowledge Filter:** A module that filters out irrelevant information using natural language inference (NLI) tasks, ensuring that only relevant knowledge is retrieved.
-3. **Memory Knowledge Reservoir:** A caching mechanism that speeds up retrieval for recurring queries by utilizing previously retrieved external knowledge.
-4. **Retrieval Trigger:** A calibration-based mechanism that determines when to initiate external knowledge retrieval based on the confidence level of existing information.
+**Cleanup status: static review only. Revised code has not been run.** The public source provides component implementations and a cached-snippet experiment, with gaps listed below; it does not contain a verified complete four-module reproduction. Default prompt adapters use a selected chat API, whereas the paper uses instruction-tuned Gemma-2B for rewriting and filtering.
 
-<img alt="image" src="https://github.com/user-attachments/assets/9eee72d0-ac96-4b8e-91cd-19ceb3d217d2">
+## Core interfaces
 
-Our four-module synergy addresses these issues by improving response accuracy from 14% to 21% compared to directly querying the LLM and achieving around a 8%~12% improvement over the traditional RAG pipeline. Additionally, we can reduce response time cost by 46% and external knowledge retrieval cost by 71% without compromising response quality.
+| Paper module | Available interface / gap |
+| --- | --- |
+| Query Rewriter+ | `QuestionRewriter.rewrite(question)` |
+| Knowledge Filter | `await KnowledgeFilter.filter(question, knowledge)` |
+| Memory Knowledge Reservoir | No standalone cache writer/update module is supplied upstream |
+| Retrieval Trigger | `RetrievalTrigger.check_retrieval_need(queries)` reads saved experience records; the original embedding helper is missing |
 
-## Motivation
+`KnowledgeRetriever` retains the original Bing v7 snippet semantics; that provider is retired. The original full-page/BM25 branch is incomplete and now fails explicitly. `Reader` retains the original reading behavior. No new reservoir, automatic cache write, provider substitution, or complete pipeline is in the default core.
 
-The current limitations of RAG systems include the following:
+## Minimal use
 
-- **Information Plateau:** A single query limits the scope of retrieval, leading to less comprehensive information.
-- **Ambiguity in Query Interpretation:** Misaligned phrasing often results in unreliable responses.
-- **Irrelevant Knowledge:** Excessive retrieval can bring irrelevant information, reducing response quality.
-- **Redundant Retrieval:** Repeated questions result in inefficient use of computational resources.
+Python 3.10+. Core dependencies are in `requirements.txt`; install them in a virtual environment only when you choose to run the code. No dependency setup was performed here.
 
-## Datasets
+```python
+from Components import QuestionRewriter, KnowledgeFilter, RetrievalTrigger, Reader
 
-The following datasets were used for our experiments:
-- **CAmbigNQ:** A curated version of the AmbigNQ dataset with clarified questions, designed to address ambiguities.
-- **NQ (Natural Questions):** A dataset of real-world search engine queries.
-- **PopQA:** Focuses on less popular topics from Wikidata.
-- **AmbigNQ:** Contains ambiguous questions transformed into closely related queries.
-- **2WIKIMQA & HotPotQA:** Datasets requiring logical reasoning and multi-hop question answering.
-
-We provide demo dataset for Q&A, and Fine-Tuning Gemma-2B in Records.
-
-## Key Findings
-
-1. **Query Rewriting**: Clarifying ambiguous questions significantly improves retrieval precision.
-2. **Multi-Query Retrieval**: Employing multiple, semantically varied queries enhances the amount of relevant information retrieved, overcoming the information plateau.
-3. **Knowledge Filtering**: The Knowledge Filter reduces noise from irrelevant data, increasing the accuracy and reliability of RAG systems.
-4. **Efficiency**: The use of the Memory Knowledge Reservoir accelerates repeated retrievals, reducing time cost by 46% at optimal configurations.
-
-## Installation
-
-1. Clone the repository:
-
-   ```bash
-   git clone https://github.com/Ancientshi/ERM4.git
-   ```
-
-2. Install dependencies:
-
-   ```bash
-   cd ERM4
-   pip install -r requirements.txt
-   ```
-3. Download Demo Datasets from https://drive.google.com/drive/folders/1UYkFJqfuNbJJZUad-psssL4uSn4ttuAY?usp=sharing, move under ERM4.
-
-4. Run the demo (knowledge retrieved from Bing search is pre-prepared for ease of use):
-
-   ```bash
-   cd shell
-   bash ERM4.sh
-   ```
-
-5. Fine-tune Gemma-2B
-   ```
-   cd shell
-   bash instruct_fine_tune_gemma.sh
-   ```
-
-6. Deploy the trained GEMMA-2B service for Flask to support API calls
-   ```
-   cd shell
-   bash infer_gemma_rewriter.sh
-   ```
-
-## Usage
-
-The provided code includes a demo that illustrates how our four-module synergy works within a RAG system. The example retrieval process uses pre-fetched data from Bing searches to streamline the execution. 
-
-## Key Considerations:
-### Prompt Design
-
-In the demo, we provide a set of pre-designed prompts for each query. It’s important to note that these prompts may influence the results to some degree. If you're interested in further experimentation, we encourage adjusting these prompts to suit the format and style of each specific dataset. The provided prompts are meant to serve as a reference, and customizing them may yield different retrieval outcomes.
-
-### Reproducibility and Research Development
-
-The source code is shared to promote advancements in the field and facilitate future research. However, we do not guarantee a 100% replication of the exact results reported in our paper. This is due to the rapid evolution of the RAG landscape, the dynamic nature of large language model (LLM) APIs, dynamics in search engine behaviors, and LLM's fine-tuning difference—all of which introduce considerable variance. Nevertheless, the key point is that the findings and conclusions should align with those in our work.
-
-We hope our guideline can help you can continue to explore RAG systems, and contribute to the evolving discourse in this domain.
-
-
-## Contact
-
-For any questions or contributions, please reach out to the project lead:
-
-- **Yunxiao Shi**  
-  Email: Yunxiao.Shi@student.uts.edu.au
-
-## Citation
-If you find our work useful and would like to reference it, please cite our paper as follows:
-
-```bibtext
-@incollection{Shi2024,
-  author    = {Yunxiao Shi and Xing Zi and Zijing Shi and Haimin Zhang and Qiang Wu and Min Xu},
-  title     = {Enhancing Retrieval and Managing Retrieval: A Four-Module Synergy for Improved Quality and Efficiency in RAG Systems},
-  booktitle = {ECAI 2024},
-  publisher = {IOS Press},
-  year      = {2024},
-  pages     = {2258--2265},
-  doi       = {10.3233/FAIA240748},
-  url       = {https://ebooks.iospress.nl/doi/10.3233/FAIA240748}
-}
+# Construction reads a local prompt; invoking model-backed methods makes remote calls.
+rewriter = QuestionRewriter(
+    "experiments/Prompt/question_rewritter_plus_prompt_popqa.txt",
+    model_name="YOUR_AVAILABLE_CHAT_MODEL",
+)
 ```
-```bibtext
-@misc{shi2024eragentenhancingretrievalaugmentedlanguage,
-      title={ERAGent: Enhancing Retrieval-Augmented Language Models with Improved Accuracy, Efficiency, and Personalization}, 
-      author={Yunxiao Shi and Xing Zi and Zijing Shi and Haimin Zhang and Qiang Wu and Min Xu},
-      year={2024},
-      eprint={2405.06683},
-      archivePrefix={arXiv},
-      primaryClass={cs.CL},
-      url={https://arxiv.org/abs/2405.06683}, 
-}
-```
-## License
 
-This project is licensed under the by-nc-sa 4.0 License.
+Component configuration is explicit and does not parse experiment CLI arguments on import. Supply original-format experience JSONL and an embedding callback to use the trigger; no embedding model is automatically selected/downloaded. Keys belong in your environment; [.env.example](.env.example) is an example only. Core interfaces are in [`Components.py`](Components.py); the runnable historical experiment entry is [`experiments/cached_qa.py`](experiments/cached_qa.py), separately documented and unexecuted.
+
+## Experiments and limitations
+
+Training, evaluation, dataset prompts and experiment launch scripts live in [`experiments/`](experiments/README.md). The cached demo uses supplied snippets and does not activate memory or the trigger. See [paper/code mapping](docs/PAPER_AND_CODE.md) and [review record](docs/LOCAL_REVIEW.md) for retained behavior and missing assets.
+
+A proposal drafted during this cleanup is quarantined in [`experiments/unverified/`](experiments/unverified/README.md). It is opt-in, never imported by default, has not been run, and is not the released ERM4 implementation or verified reproduction.
+
+## Citation, license and contact
+
+Use the ECAI entry `Shi2024ERM4` in [citations.bib](citations.bib); `CITATION.cff` prefers that paper. [ERAGent, arXiv:2405.06683](https://arxiv.org/abs/2405.06683), is a related earlier draft whose metadata links the same ECAI DOI. Its broader personalization claims are outside this paper's scope; its separate citation is retained.
+
+The existing [CC BY-NC-SA 4.0 license](LICENSE) is unchanged. Project contact: Yunxiao Shi, Yunxiao.Shi@student.uts.edu.au.

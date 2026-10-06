@@ -1,0 +1,9 @@
+# Optional inferred proposal — not the upstream ERM4 implementation
+
+This folder preserves a proposal drafted during the cleanup. It is **not imported by the default core or cached QA demo**, has never been run, and must not be presented as a verified paper reproduction or original released implementation.
+
+`components.py` adds an in-memory `MemoryKnowledgeReservoir`, a replacement trigger with caller-supplied embeddings and a manual cosine calculation, a provider-neutral search callback, generic prompts, and stricter output validation. `composition.py` adds an automatic rewrite → memory/trigger → retrieve → filter → update cache → read flow absent from the upstream demo. `smoke_test.py` is an unexecuted deterministic example for this proposal only.
+
+The trigger's default numeric thresholds (0.4 similarity; 3 matching titles) were copied from upstream, but default values are not a calibration result. The proposal differs from upstream: an in-memory dictionary replaces historical experience JSONL loading; manual cosine replaces scikit-learn cosine; empty-memory handling and dependency/output checks are added; provider-neutral search replaces Bing snippets; automatic filtering/caching/retrieval is newly wired; generic prompts replace experimental examples. It also omits upstream legacy profile/multi-round reader branches. These are implementation and retrieval-behavior changes, not a pure move or verified algorithm equivalence.
+
+The smoke example deliberately uses a 0.6 similarity threshold and popularity threshold 1 to illustrate one-entry caching. Those toy settings are neither paper settings nor benchmark evidence. Nothing in this folder selects/downloads an embedding model. If the author later wants this proposal developed, review its semantics and authorize validation separately.

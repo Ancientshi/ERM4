@@ -1,0 +1,6 @@
+Answer the question using the supplied knowledge. If knowledge is unavailable, answer from your own knowledge.
+[Question]
+{Question}
+[External Knowledge]
+{External_Knowledge}
+Return only a valid JSON array of concise answer strings.
